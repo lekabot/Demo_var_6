@@ -1,4 +1,4 @@
-namespace Demo_var_6.Classes
+namespace Demo_var_6.Classes.Program
 {
     internal static class Program
     {
@@ -11,7 +11,7 @@ namespace Demo_var_6.Classes
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            Application.Run(new LogIn());
         }
     }
 }
