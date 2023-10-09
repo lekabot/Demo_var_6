@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Demo_var_6.Classes.DataBaseClasses
 {
-    internal class PickupPoints
+    class PickupPoints
     {
+        public int ID { get; set; }
+        public string Address { get; set; }
     }
 }

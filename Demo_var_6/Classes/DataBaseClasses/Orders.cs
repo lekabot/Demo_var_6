@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace Demo_var_6.Classes.DataBaseClasses
 {
-    internal class Orders
+    class Orders
     {
+        public int ID { get; set; }
+        public DateTime OrderDate { get; set; }
+        public DateTime DeliveryDate { get; set; }
+        public int PickupPointID { get; set; }
+        public int UserID { get; set; }
+        public int ReceivingCode { get; set; }
+        public string Status { get; set; }
     }
 }

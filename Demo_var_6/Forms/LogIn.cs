@@ -12,15 +12,7 @@ namespace Demo_var_6
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            DataBaseConnection dataBaseConnection = new DataBaseConnection();
-
-            if (dataBaseConnection.sqlConnection.State == ConnectionState.Open)
-            {
-                MessageBox.Show("Hello world");
-            } else
-            {
-                MessageBox.Show("Go fuck yourSelf");
-            }
+            
         }
     }
 }
