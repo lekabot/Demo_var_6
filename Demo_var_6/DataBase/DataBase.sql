@@ -9,8 +9,8 @@ create table Users
   [Surname] varchar(100) not null,
   [Name] varchar(100) not null,
   [Patronymic] varchar(100) not null,
-  [Login] text not null,
-  [Password] text not null,
+  [Login] varchar(max) not null,
+  [Password] varchar(max) not null,
   [Role] int not null,
   foreign key ([Role]) references [Roles](ID)
 );
@@ -34,7 +34,7 @@ create table [Orders]
 create table Products
 (
   ProductArticleNumber nvarchar(100) primary key,
-  Title text not null,
+  Title varchar(max) not null,
   MeasuremenUnit varchar(50) not null,
   Cost decimal(19,4) not null,
   MaximumDiscount int not null,
@@ -43,7 +43,7 @@ create table Products
   Category varchar(200) not null,
   CurrentDiscount int not null,
   QuantityInStock int not null,
-  [Description] text not null,
+  [Description] varchar(max) not null,
   Photo varchar(200)
 );
 create table OrderProduct
@@ -132,16 +132,16 @@ VALUES
 ('W548O7', 'Сухой корм', 'шт.', 600, 15, 'Dog Chow', 'PetShop', 'Товары для собак', 5, 15, 'Сухой корм для щенков DOG CHOW Puppy, ягненок 2.5 кг', NULL);
 INSERT INTO Users ([Surname], [Name], [Patronymic], [Login], [Password], [Role])
 VALUES
-('Суслов', 'Илья', 'Арсентьевич', 'СусловИльяАрсентьевич', '2L6KZG', 1),
-('Яковлева', 'Ярослава', 'Даниэльевна', 'ЯковлеваЯрославаДаниэльевна', 'uzWC67', 1),
-('Игнатьева', 'Алина', 'Михайловна', 'ИгнатьеваАлинаМихайловна', '8ntwUp', 1),
-('Денисов', 'Михаил', 'Романович', 'ДенисовМихаилРоманович', 'YOyhfR', 2),
-('Тимофеев', 'Михаил', 'Елисеевич', 'ТимофеевМихаилЕлисеевич', 'RSbvHv', 2),
-('Соловьев', 'Ярослав', 'Маркович', 'СоловьевЯрославМаркович', 'rwVDh9', 2),
-('Филимонов', 'Роберт', 'Васильевич', 'ФилимоновРобертВасильевич', 'LdNyos', 3),
-('Шилова', 'Майя', 'Артемьевна', 'ШиловаМайяАртемьевна', 'gynQMT', 3),
-('Чистякова', 'Виктория', 'Степановна', 'ЧистяковаВикторияСтепановна', 'AtnDjr', 3),
-('Волкова', 'Эмилия', 'Артёмовна', 'ВолковаЭмилияАртёмовна', 'JlFRCZ', 3);
+('Суслов', 'Илья', 'Арсентьевич', 'pixil59@gmail.com', '2L6KZG', 1),
+('Яковлева', 'Ярослава', 'Даниэльевна', 'deummecillummu-4992@mail.ru', 'uzWC67', 1),
+('Игнатьева', 'Алина', 'Михайловна', 'vilagajaunne-5170@yandex.ru', '8ntwUp', 1),
+('Денисов', 'Михаил', 'Романович', 'frusubroppotou656@yandex.ru', 'YOyhfR', 2),
+('Тимофеев', 'Михаил', 'Елисеевич', 'leuttevitrafo1998@mail.ru', 'RSbvHv', 2),
+('Соловьев', 'Ярослав', 'Маркович', 'frapreubrulloba1141@yandex.ru', 'rwVDh9', 2),
+('Филимонов', 'Роберт', 'Васильевич', 'frapreubrulloba1141@yandex.ru', 'LdNyos', 3),
+('Шилова', 'Майя', 'Артемьевна', 'frapreubrulloba1141@yandex.ru', 'gynQMT', 3),
+('Чистякова', 'Виктория', 'Степановна', 'frapreubrulloba1141@yandex.ru', 'AtnDjr', 3),
+('Волкова', 'Эмилия', 'Артёмовна', 'frapreubrulloba1141@yandex.ru', 'JlFRCZ', 3);
 INSERT INTO [Orders] (OrderDate, DeliveryDate, PickupPointID, UserID, ReceivingCode, [Status])
 VALUES
 ('2022-05-06T00:00:00', '2022-05-12T00:00:00', 25, NULL, 601, 'Новый'),

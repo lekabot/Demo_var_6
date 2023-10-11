@@ -1,0 +1,2 @@
+Комманда для переноса таблиц из базы в C# классы:
+dotnet ef dbcontext scaffold "Data Source=DESKTOP-N79SNU4;Database=Trade;Integrated Security=True;TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer -o ./Classes/DataBaseClasses

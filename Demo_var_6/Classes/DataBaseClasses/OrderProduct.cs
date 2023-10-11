@@ -1,33 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Demo_var_6.Classes.DataBaseClasses
+namespace Demo_var_6.Classes.DataBaseClasses;
+
+public partial class OrderProduct
 {
-    class OrderProduct
-    {
-        [Required]
-        public int OrderID { get; set; }
+    public int OrderId { get; set; }
 
-        [Required]
-        [MaxLength(100)]
-        public string ProductArticleNumber { get; set; }
+    public string ProductArticleNumber { get; set; } = null!;
 
-        [Required]
-        public int Quantity { get; set; }
+    public int Quantity { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
-        [ForeignKey("OrderID")]
-        public virtual Order Order { get; set; }
+    public virtual Order Order { get; set; } = null!;
 
-        [Key]
-        [Column(Order = 2)]
-        [ForeignKey("ProductArticleNumber")]
-        public virtual Product Product { get; set; }
-    }
+    public virtual Product ProductArticleNumberNavigation { get; set; } = null!;
 }
