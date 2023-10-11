@@ -1,5 +1,6 @@
 ﻿using Demo_var_6.Classes.DataBaseClasses;
 using Demo_var_6.Forms.Capcha.UserContol;
+using System.Data;
 
 namespace Demo_var_6.Forms
 {
@@ -9,6 +10,14 @@ namespace Demo_var_6.Forms
         private List<Product> allProducts;
         private int totalProductsCount;
         private int displayedProductsCount;
+        string Role { get; set; }
+
+        public Content(string role)
+        {
+            Role = role;
+            InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
+        }
 
         public Content()
         {
@@ -16,12 +25,23 @@ namespace Demo_var_6.Forms
             StartPosition = FormStartPosition.CenterScreen;
         }
 
+
         private void Content_Load(object sender, EventArgs e)
         {
             LoadAllProducts();
             LoadProducts();
             PopulateManufacturersComboBox();
+            OiHowAreYou();
         }
+
+        private void OiHowAreYou()
+        {
+            if (Role != "Администратор")
+            {
+                ModeraitBT.Hide();
+            }
+        }
+
         private void LoadAllProducts()
         {
             using (var dbContext = new TradeContext())
@@ -198,6 +218,13 @@ namespace Demo_var_6.Forms
 
                 DisplayProducts(displayedProducts);
             }
+        }
+
+        private void ModeraitBT_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ModerateForm moderateForm = new ModerateForm();
+            moderateForm.Show();
         }
     }
 }

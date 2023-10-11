@@ -35,7 +35,7 @@ namespace Demo_var_6
                 if (CheckUserIsExist(LoginTB.Text, PasswordTB.Text))
                 {
                     string userRole = GetUserRole(LoginTB.Text);
-                    var nextForm = new Content();
+                    var nextForm = new Content(userRole);
                     nextForm.Show();
                     this.Hide();
                 }

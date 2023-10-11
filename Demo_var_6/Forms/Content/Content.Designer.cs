@@ -33,6 +33,7 @@
             DescendingSort = new RadioButton();
             Quntity = new Label();
             ManufacturerComboBox = new ComboBox();
+            ModeraitBT = new Button();
             SuspendLayout();
             // 
             // Finder
@@ -92,12 +93,27 @@
             ManufacturerComboBox.TabIndex = 4;
             ManufacturerComboBox.SelectedIndexChanged += ManufacturerComboBox_SelectedIndexChanged;
             // 
+            // ModeraitBT
+            // 
+            ModeraitBT.BackColor = Color.FromArgb(73, 140, 81);
+            ModeraitBT.FlatStyle = FlatStyle.Flat;
+            ModeraitBT.Font = new Font("Comic Sans MS", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            ModeraitBT.ForeColor = Color.White;
+            ModeraitBT.Location = new Point(725, 10);
+            ModeraitBT.Name = "ModeraitBT";
+            ModeraitBT.Size = new Size(71, 37);
+            ModeraitBT.TabIndex = 7;
+            ModeraitBT.Text = "Moderait";
+            ModeraitBT.UseVisualStyleBackColor = false;
+            ModeraitBT.Click += ModeraitBT_Click;
+            // 
             // Content
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             ClientSize = new Size(820, 450);
+            Controls.Add(ModeraitBT);
             Controls.Add(ManufacturerComboBox);
             Controls.Add(Quntity);
             Controls.Add(DescendingSort);
@@ -117,5 +133,6 @@
         private RadioButton DescendingSort;
         private Label Quntity;
         private ComboBox ManufacturerComboBox;
+        private Button ModeraitBT;
     }
 }
