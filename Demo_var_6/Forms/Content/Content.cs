@@ -6,6 +6,8 @@ namespace Demo_var_6.Forms
     public partial class Content : Form
     {
         private List<Product> displayedProducts;
+        private int totalProductsCount;
+        private int displayedProductsCount;
 
         public Content()
         {
@@ -16,13 +18,16 @@ namespace Demo_var_6.Forms
         private void Content_Load(object sender, EventArgs e)
         {
             LoadProducts();
+            PopulateManufacturersComboBox();
         }
 
         private void LoadProducts()
         {
             using (var dbContext = new TradeContext())
             {
+                totalProductsCount = dbContext.Products.Count();
                 displayedProducts = dbContext.Products.ToList();
+                displayedProductsCount = totalProductsCount;
                 DisplayProducts(displayedProducts);
             }
         }
@@ -94,6 +99,8 @@ namespace Demo_var_6.Forms
                 Controls.Add(productControl);
                 yOffset += productControl.Height + 1;
             }
+            displayedProductsCount = products.Count;
+            UpdateProductsCountLabel();
         }
 
         private ProductInfoControl CreateProductControl(Product product)
@@ -104,7 +111,7 @@ namespace Demo_var_6.Forms
                 ProductDescription = product.Description,
                 ProductManufacturer = product.Manufacturer,
                 ProductQuantity = product.QuantityInStock,
-                
+
             };
 
             string priceText = string.Format("{0:F2} ₽", product.Cost);
@@ -151,6 +158,44 @@ namespace Demo_var_6.Forms
                 control.Dispose();
             }
         }
+        private void UpdateProductsCountLabel()
+        {
+            Quntity.Text = $"{displayedProductsCount} из {totalProductsCount}";
+        }
+        private void PopulateManufacturersComboBox()
+        {
+            using (var dbContext = new TradeContext())
+            {
+                var manufacturers = dbContext.Products.Select(product => product.Manufacturer).Distinct().ToList();
+                ManufacturerComboBox.Items.Clear();
+                ManufacturerComboBox.Items.Add("Все производители");
+                ManufacturerComboBox.Items.AddRange(manufacturers.ToArray());
+            }
+        }
 
+        private void ManufacturerComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedManufacturer = ManufacturerComboBox.SelectedItem.ToString();
+            if (selectedManufacturer == "Все производители")
+            {
+                LoadProducts();
+            }
+            else
+            {
+                LoadProductsByManufacturer(selectedManufacturer);
+            }
+        }
+
+        private void LoadProductsByManufacturer(string manufacturer)
+        {
+            using (var dbContext = new TradeContext())
+            {
+                displayedProducts = dbContext.Products
+                    .Where(product => product.Manufacturer == manufacturer)
+                    .ToList();
+
+                DisplayProducts(displayedProducts);
+            }
+        }
     }
 }

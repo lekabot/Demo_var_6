@@ -32,7 +32,7 @@
             AscendingSort = new RadioButton();
             DescendingSort = new RadioButton();
             Quntity = new Label();
-            comboBox1 = new ComboBox();
+            ManufacturerComboBox = new ComboBox();
             SuspendLayout();
             // 
             // Finder
@@ -81,15 +81,16 @@
             Quntity.Size = new Size(0, 23);
             Quntity.TabIndex = 3;
             // 
-            // comboBox1
+            // ManufacturerComboBox
             // 
-            comboBox1.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox1.ForeColor = Color.FromArgb(73, 140, 81);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(96, 12);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(196, 26);
-            comboBox1.TabIndex = 4;
+            ManufacturerComboBox.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            ManufacturerComboBox.ForeColor = Color.FromArgb(73, 140, 81);
+            ManufacturerComboBox.FormattingEnabled = true;
+            ManufacturerComboBox.Location = new Point(96, 12);
+            ManufacturerComboBox.Name = "ManufacturerComboBox";
+            ManufacturerComboBox.Size = new Size(196, 26);
+            ManufacturerComboBox.TabIndex = 4;
+            ManufacturerComboBox.SelectedIndexChanged += ManufacturerComboBox_SelectedIndexChanged;
             // 
             // Content
             // 
@@ -97,7 +98,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             ClientSize = new Size(820, 450);
-            Controls.Add(comboBox1);
+            Controls.Add(ManufacturerComboBox);
             Controls.Add(Quntity);
             Controls.Add(DescendingSort);
             Controls.Add(AscendingSort);
@@ -115,6 +116,6 @@
         private RadioButton AscendingSort;
         private RadioButton DescendingSort;
         private Label Quntity;
-        private ComboBox comboBox1;
+        private ComboBox ManufacturerComboBox;
     }
 }
