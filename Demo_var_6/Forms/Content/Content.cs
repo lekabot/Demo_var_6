@@ -6,6 +6,7 @@ namespace Demo_var_6.Forms
     public partial class Content : Form
     {
         private List<Product> displayedProducts;
+        private List<Product> allProducts;
         private int totalProductsCount;
         private int displayedProductsCount;
 
@@ -17,51 +18,52 @@ namespace Demo_var_6.Forms
 
         private void Content_Load(object sender, EventArgs e)
         {
+            LoadAllProducts();
             LoadProducts();
             PopulateManufacturersComboBox();
+        }
+        private void LoadAllProducts()
+        {
+            using (var dbContext = new TradeContext())
+            {
+                allProducts = dbContext.Products.ToList();
+            }
         }
 
         private void LoadProducts()
         {
             using (var dbContext = new TradeContext())
             {
-                totalProductsCount = dbContext.Products.Count();
                 displayedProducts = dbContext.Products.ToList();
-                displayedProductsCount = totalProductsCount;
+                totalProductsCount = allProducts.Count;
+                allProducts = dbContext.Products.ToList();
+                displayedProducts = allProducts;
                 DisplayProducts(displayedProducts);
             }
         }
+
 
         private void Finder_TextChanged(object sender, EventArgs e)
         {
             string searchTerm = Finder.Text.ToLower();
             if (string.IsNullOrEmpty(searchTerm))
             {
-                ClearSearchResults();
                 LoadProducts();
             }
             else
             {
-                List<Product> searchResults = new List<Product>();
-                using (var dbContext = new TradeContext())
-                {
-                    var products = dbContext.Products.ToList();
+                displayedProducts = allProducts
+                    .Where(product =>
+                        product.Title.ToLower().Contains(searchTerm) ||
+                        product.Description.ToLower().Contains(searchTerm) ||
+                        product.Manufacturer.ToLower().Contains(searchTerm) ||
+                        product.Category.ToLower().Contains(searchTerm))
+                    .ToList();
 
-                    foreach (var product in products)
-                    {
-                        if (product.Title.ToLower().Contains(searchTerm) ||
-                            product.Description.ToLower().Contains(searchTerm) ||
-                            product.Manufacturer.ToLower().Contains(searchTerm) ||
-                            product.Category.ToLower().Contains(searchTerm))
-                        {
-                            searchResults.Add(product);
-                        }
-                    }
-                }
-                ClearSearchResults();
-                DisplayProducts(searchResults);
+                DisplayProducts(displayedProducts);
             }
         }
+
 
         private void AscendingSort_CheckedChanged(object sender, EventArgs e)
         {
