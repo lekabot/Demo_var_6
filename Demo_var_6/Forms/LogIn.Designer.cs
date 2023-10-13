@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogIn));
             Title = new Label();
             LoginLB = new Label();
             PasswordLB = new Label();
@@ -37,6 +38,8 @@
             SignInBT = new Button();
             GuestLogin = new Button();
             timer = new System.Windows.Forms.Timer(components);
+            Logo = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)Logo).BeginInit();
             SuspendLayout();
             // 
             // Title
@@ -124,11 +127,22 @@
             // 
             timer.Tick += timer_Tick;
             // 
+            // Logo
+            // 
+            Logo.Image = (Image)resources.GetObject("Logo.Image");
+            Logo.Location = new Point(181, 65);
+            Logo.Name = "Logo";
+            Logo.Size = new Size(75, 75);
+            Logo.SizeMode = PictureBoxSizeMode.StretchImage;
+            Logo.TabIndex = 7;
+            Logo.TabStop = false;
+            // 
             // LogIn
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(Logo);
             Controls.Add(GuestLogin);
             Controls.Add(SignInBT);
             Controls.Add(PasswordTB);
@@ -136,9 +150,11 @@
             Controls.Add(PasswordLB);
             Controls.Add(LoginLB);
             Controls.Add(Title);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "LogIn";
             Text = "Login";
             Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)Logo).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -153,5 +169,6 @@
         private Button SignInBT;
         private Button GuestLogin;
         private System.Windows.Forms.Timer timer;
+        private PictureBox Logo;
     }
 }

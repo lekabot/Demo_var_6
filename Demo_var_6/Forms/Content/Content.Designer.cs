@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Content));
             Finder = new TextBox();
             AscendingSort = new RadioButton();
             DescendingSort = new RadioButton();
@@ -119,6 +120,7 @@
             Controls.Add(DescendingSort);
             Controls.Add(AscendingSort);
             Controls.Add(Finder);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Content";
             Text = "Content";
             Load += Content_Load;

@@ -29,20 +29,24 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModerateForm));
             ProductsDG = new DataGridView();
-            productBindingSource = new BindingSource(components);
-            GuestLogin = new Button();
-            tradeContextBindingSource = new BindingSource(components);
-            ordersDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            productArticleNumberDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            titleDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            measuremenUnitDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            costDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            maximumDiscountDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            manufacturerDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            supplierDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            categoryDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            currentDiscountDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            quantityInStockDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            descriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            photoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             orderProductsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            pickupPointsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            productsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            rolesDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            usersDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            databaseDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            changeTrackerDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            modelDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            contextIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            productBindingSource = new BindingSource(components);
+            tradeContextBindingSource = new BindingSource(components);
+            GuestLogin = new Button();
             ((System.ComponentModel.ISupportInitialize)ProductsDG).BeginInit();
             ((System.ComponentModel.ISupportInitialize)productBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tradeContextBindingSource).BeginInit();
@@ -52,17 +56,100 @@
             // 
             ProductsDG.AutoGenerateColumns = false;
             ProductsDG.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            ProductsDG.Columns.AddRange(new DataGridViewColumn[] { ordersDataGridViewTextBoxColumn, orderProductsDataGridViewTextBoxColumn, pickupPointsDataGridViewTextBoxColumn, productsDataGridViewTextBoxColumn, rolesDataGridViewTextBoxColumn, usersDataGridViewTextBoxColumn, databaseDataGridViewTextBoxColumn, changeTrackerDataGridViewTextBoxColumn, modelDataGridViewTextBoxColumn, contextIdDataGridViewTextBoxColumn });
-            ProductsDG.DataSource = tradeContextBindingSource;
+            ProductsDG.Columns.AddRange(new DataGridViewColumn[] { productArticleNumberDataGridViewTextBoxColumn, titleDataGridViewTextBoxColumn, measuremenUnitDataGridViewTextBoxColumn, costDataGridViewTextBoxColumn, maximumDiscountDataGridViewTextBoxColumn, manufacturerDataGridViewTextBoxColumn, supplierDataGridViewTextBoxColumn, categoryDataGridViewTextBoxColumn, currentDiscountDataGridViewTextBoxColumn, quantityInStockDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn, photoDataGridViewTextBoxColumn, orderProductsDataGridViewTextBoxColumn });
+            ProductsDG.DataSource = productBindingSource;
             ProductsDG.Location = new Point(1, 39);
             ProductsDG.Name = "ProductsDG";
             ProductsDG.RowTemplate.Height = 25;
             ProductsDG.Size = new Size(799, 414);
             ProductsDG.TabIndex = 0;
+            ProductsDG.CellContentClick += ProductsDG_CellContentClick;
+            // 
+            // productArticleNumberDataGridViewTextBoxColumn
+            // 
+            productArticleNumberDataGridViewTextBoxColumn.DataPropertyName = "ProductArticleNumber";
+            productArticleNumberDataGridViewTextBoxColumn.HeaderText = "ProductArticleNumber";
+            productArticleNumberDataGridViewTextBoxColumn.Name = "productArticleNumberDataGridViewTextBoxColumn";
+            // 
+            // titleDataGridViewTextBoxColumn
+            // 
+            titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
+            titleDataGridViewTextBoxColumn.HeaderText = "Title";
+            titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
+            // 
+            // measuremenUnitDataGridViewTextBoxColumn
+            // 
+            measuremenUnitDataGridViewTextBoxColumn.DataPropertyName = "MeasuremenUnit";
+            measuremenUnitDataGridViewTextBoxColumn.HeaderText = "MeasuremenUnit";
+            measuremenUnitDataGridViewTextBoxColumn.Name = "measuremenUnitDataGridViewTextBoxColumn";
+            // 
+            // costDataGridViewTextBoxColumn
+            // 
+            costDataGridViewTextBoxColumn.DataPropertyName = "Cost";
+            costDataGridViewTextBoxColumn.HeaderText = "Cost";
+            costDataGridViewTextBoxColumn.Name = "costDataGridViewTextBoxColumn";
+            // 
+            // maximumDiscountDataGridViewTextBoxColumn
+            // 
+            maximumDiscountDataGridViewTextBoxColumn.DataPropertyName = "MaximumDiscount";
+            maximumDiscountDataGridViewTextBoxColumn.HeaderText = "MaximumDiscount";
+            maximumDiscountDataGridViewTextBoxColumn.Name = "maximumDiscountDataGridViewTextBoxColumn";
+            // 
+            // manufacturerDataGridViewTextBoxColumn
+            // 
+            manufacturerDataGridViewTextBoxColumn.DataPropertyName = "Manufacturer";
+            manufacturerDataGridViewTextBoxColumn.HeaderText = "Manufacturer";
+            manufacturerDataGridViewTextBoxColumn.Name = "manufacturerDataGridViewTextBoxColumn";
+            // 
+            // supplierDataGridViewTextBoxColumn
+            // 
+            supplierDataGridViewTextBoxColumn.DataPropertyName = "Supplier";
+            supplierDataGridViewTextBoxColumn.HeaderText = "Supplier";
+            supplierDataGridViewTextBoxColumn.Name = "supplierDataGridViewTextBoxColumn";
+            // 
+            // categoryDataGridViewTextBoxColumn
+            // 
+            categoryDataGridViewTextBoxColumn.DataPropertyName = "Category";
+            categoryDataGridViewTextBoxColumn.HeaderText = "Category";
+            categoryDataGridViewTextBoxColumn.Name = "categoryDataGridViewTextBoxColumn";
+            // 
+            // currentDiscountDataGridViewTextBoxColumn
+            // 
+            currentDiscountDataGridViewTextBoxColumn.DataPropertyName = "CurrentDiscount";
+            currentDiscountDataGridViewTextBoxColumn.HeaderText = "CurrentDiscount";
+            currentDiscountDataGridViewTextBoxColumn.Name = "currentDiscountDataGridViewTextBoxColumn";
+            // 
+            // quantityInStockDataGridViewTextBoxColumn
+            // 
+            quantityInStockDataGridViewTextBoxColumn.DataPropertyName = "QuantityInStock";
+            quantityInStockDataGridViewTextBoxColumn.HeaderText = "QuantityInStock";
+            quantityInStockDataGridViewTextBoxColumn.Name = "quantityInStockDataGridViewTextBoxColumn";
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            // 
+            // photoDataGridViewTextBoxColumn
+            // 
+            photoDataGridViewTextBoxColumn.DataPropertyName = "Photo";
+            photoDataGridViewTextBoxColumn.HeaderText = "Photo";
+            photoDataGridViewTextBoxColumn.Name = "photoDataGridViewTextBoxColumn";
+            // 
+            // orderProductsDataGridViewTextBoxColumn
+            // 
+            orderProductsDataGridViewTextBoxColumn.DataPropertyName = "OrderProducts";
+            orderProductsDataGridViewTextBoxColumn.HeaderText = "OrderProducts";
+            orderProductsDataGridViewTextBoxColumn.Name = "orderProductsDataGridViewTextBoxColumn";
             // 
             // productBindingSource
             // 
             productBindingSource.DataSource = typeof(Classes.DataBaseClasses.Product);
+            // 
+            // tradeContextBindingSource
+            // 
+            tradeContextBindingSource.DataSource = typeof(Classes.DataBaseClasses.TradeContext);
             // 
             // GuestLogin
             // 
@@ -78,74 +165,6 @@
             GuestLogin.UseVisualStyleBackColor = false;
             GuestLogin.Click += GuestLogin_Click;
             // 
-            // tradeContextBindingSource
-            // 
-            tradeContextBindingSource.DataSource = typeof(Classes.DataBaseClasses.TradeContext);
-            // 
-            // ordersDataGridViewTextBoxColumn
-            // 
-            ordersDataGridViewTextBoxColumn.DataPropertyName = "Orders";
-            ordersDataGridViewTextBoxColumn.HeaderText = "Orders";
-            ordersDataGridViewTextBoxColumn.Name = "ordersDataGridViewTextBoxColumn";
-            // 
-            // orderProductsDataGridViewTextBoxColumn
-            // 
-            orderProductsDataGridViewTextBoxColumn.DataPropertyName = "OrderProducts";
-            orderProductsDataGridViewTextBoxColumn.HeaderText = "OrderProducts";
-            orderProductsDataGridViewTextBoxColumn.Name = "orderProductsDataGridViewTextBoxColumn";
-            // 
-            // pickupPointsDataGridViewTextBoxColumn
-            // 
-            pickupPointsDataGridViewTextBoxColumn.DataPropertyName = "PickupPoints";
-            pickupPointsDataGridViewTextBoxColumn.HeaderText = "PickupPoints";
-            pickupPointsDataGridViewTextBoxColumn.Name = "pickupPointsDataGridViewTextBoxColumn";
-            // 
-            // productsDataGridViewTextBoxColumn
-            // 
-            productsDataGridViewTextBoxColumn.DataPropertyName = "Products";
-            productsDataGridViewTextBoxColumn.HeaderText = "Products";
-            productsDataGridViewTextBoxColumn.Name = "productsDataGridViewTextBoxColumn";
-            // 
-            // rolesDataGridViewTextBoxColumn
-            // 
-            rolesDataGridViewTextBoxColumn.DataPropertyName = "Roles";
-            rolesDataGridViewTextBoxColumn.HeaderText = "Roles";
-            rolesDataGridViewTextBoxColumn.Name = "rolesDataGridViewTextBoxColumn";
-            // 
-            // usersDataGridViewTextBoxColumn
-            // 
-            usersDataGridViewTextBoxColumn.DataPropertyName = "Users";
-            usersDataGridViewTextBoxColumn.HeaderText = "Users";
-            usersDataGridViewTextBoxColumn.Name = "usersDataGridViewTextBoxColumn";
-            // 
-            // databaseDataGridViewTextBoxColumn
-            // 
-            databaseDataGridViewTextBoxColumn.DataPropertyName = "Database";
-            databaseDataGridViewTextBoxColumn.HeaderText = "Database";
-            databaseDataGridViewTextBoxColumn.Name = "databaseDataGridViewTextBoxColumn";
-            databaseDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // changeTrackerDataGridViewTextBoxColumn
-            // 
-            changeTrackerDataGridViewTextBoxColumn.DataPropertyName = "ChangeTracker";
-            changeTrackerDataGridViewTextBoxColumn.HeaderText = "ChangeTracker";
-            changeTrackerDataGridViewTextBoxColumn.Name = "changeTrackerDataGridViewTextBoxColumn";
-            changeTrackerDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // modelDataGridViewTextBoxColumn
-            // 
-            modelDataGridViewTextBoxColumn.DataPropertyName = "Model";
-            modelDataGridViewTextBoxColumn.HeaderText = "Model";
-            modelDataGridViewTextBoxColumn.Name = "modelDataGridViewTextBoxColumn";
-            modelDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // contextIdDataGridViewTextBoxColumn
-            // 
-            contextIdDataGridViewTextBoxColumn.DataPropertyName = "ContextId";
-            contextIdDataGridViewTextBoxColumn.HeaderText = "ContextId";
-            contextIdDataGridViewTextBoxColumn.Name = "contextIdDataGridViewTextBoxColumn";
-            contextIdDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // ModerateForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -153,6 +172,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(GuestLogin);
             Controls.Add(ProductsDG);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ModerateForm";
             Text = "Back";
             Load += ModerateForm_Load;
@@ -167,16 +187,19 @@
         private DataGridView ProductsDG;
         private BindingSource productBindingSource;
         private Button GuestLogin;
-        private DataGridViewTextBoxColumn ordersDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn orderProductsDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn pickupPointsDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn productsDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn rolesDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn usersDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn databaseDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn changeTrackerDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn modelDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn contextIdDataGridViewTextBoxColumn;
         private BindingSource tradeContextBindingSource;
+        private DataGridViewTextBoxColumn productArticleNumberDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn measuremenUnitDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn costDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn maximumDiscountDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn manufacturerDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn supplierDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn categoryDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn currentDiscountDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn quantityInStockDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn photoDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn orderProductsDataGridViewTextBoxColumn;
     }
 }
