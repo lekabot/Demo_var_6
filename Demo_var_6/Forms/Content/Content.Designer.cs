@@ -34,14 +34,13 @@
             DescendingSort = new RadioButton();
             Quntity = new Label();
             ManufacturerComboBox = new ComboBox();
-            ModeraitBT = new Button();
             SuspendLayout();
             // 
             // Finder
             // 
             Finder.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             Finder.ForeColor = Color.FromArgb(73, 140, 81);
-            Finder.Location = new Point(309, 12);
+            Finder.Location = new Point(363, 9);
             Finder.Name = "Finder";
             Finder.Size = new Size(196, 26);
             Finder.TabIndex = 0;
@@ -51,7 +50,7 @@
             // 
             AscendingSort.AutoSize = true;
             AscendingSort.ForeColor = Color.FromArgb(73, 140, 81);
-            AscendingSort.Location = new Point(526, 13);
+            AscendingSort.Location = new Point(610, 12);
             AscendingSort.Name = "AscendingSort";
             AscendingSort.Size = new Size(183, 19);
             AscendingSort.TabIndex = 1;
@@ -64,7 +63,7 @@
             // 
             DescendingSort.AutoSize = true;
             DescendingSort.ForeColor = Color.FromArgb(73, 140, 81);
-            DescendingSort.Location = new Point(526, 38);
+            DescendingSort.Location = new Point(610, 37);
             DescendingSort.Name = "DescendingSort";
             DescendingSort.Size = new Size(169, 19);
             DescendingSort.TabIndex = 2;
@@ -88,25 +87,11 @@
             ManufacturerComboBox.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             ManufacturerComboBox.ForeColor = Color.FromArgb(73, 140, 81);
             ManufacturerComboBox.FormattingEnabled = true;
-            ManufacturerComboBox.Location = new Point(96, 12);
+            ManufacturerComboBox.Location = new Point(150, 9);
             ManufacturerComboBox.Name = "ManufacturerComboBox";
             ManufacturerComboBox.Size = new Size(196, 26);
             ManufacturerComboBox.TabIndex = 4;
             ManufacturerComboBox.SelectedIndexChanged += ManufacturerComboBox_SelectedIndexChanged;
-            // 
-            // ModeraitBT
-            // 
-            ModeraitBT.BackColor = Color.FromArgb(73, 140, 81);
-            ModeraitBT.FlatStyle = FlatStyle.Flat;
-            ModeraitBT.Font = new Font("Comic Sans MS", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            ModeraitBT.ForeColor = Color.White;
-            ModeraitBT.Location = new Point(725, 10);
-            ModeraitBT.Name = "ModeraitBT";
-            ModeraitBT.Size = new Size(71, 37);
-            ModeraitBT.TabIndex = 7;
-            ModeraitBT.Text = "Moderait";
-            ModeraitBT.UseVisualStyleBackColor = false;
-            ModeraitBT.Click += ModeraitBT_Click;
             // 
             // Content
             // 
@@ -114,7 +99,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             ClientSize = new Size(820, 450);
-            Controls.Add(ModeraitBT);
             Controls.Add(ManufacturerComboBox);
             Controls.Add(Quntity);
             Controls.Add(DescendingSort);
@@ -135,6 +119,5 @@
         private RadioButton DescendingSort;
         private Label Quntity;
         private ComboBox ManufacturerComboBox;
-        private Button ModeraitBT;
     }
 }

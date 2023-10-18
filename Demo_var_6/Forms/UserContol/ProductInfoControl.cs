@@ -16,6 +16,9 @@ namespace Demo_var_6.Forms.Capcha.UserContol
         {
             InitializeComponent();
         }
+
+        public string ProductArticleNumber { get; set; }
+
         public Image ProductImage
         {
             get { return ProductImageEL.Image; }

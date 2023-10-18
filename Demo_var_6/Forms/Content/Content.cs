@@ -10,6 +10,7 @@ namespace Demo_var_6.Forms
         private List<Product> allProducts;
         private int totalProductsCount;
         private int displayedProductsCount;
+
         string Role { get; set; }
 
         public Content(string role)
@@ -31,15 +32,6 @@ namespace Demo_var_6.Forms
             LoadAllProducts();
             LoadProducts();
             PopulateManufacturersComboBox();
-            OiHowAreYou();
-        }
-
-        private void OiHowAreYou()
-        {
-            if (Role != "Администратор")
-            {
-                ModeraitBT.Hide();
-            }
         }
 
         private void LoadAllProducts()
@@ -62,7 +54,6 @@ namespace Demo_var_6.Forms
             }
         }
 
-
         private void Finder_TextChanged(object sender, EventArgs e)
         {
             string searchTerm = Finder.Text.ToLower();
@@ -84,7 +75,6 @@ namespace Demo_var_6.Forms
             }
         }
 
-
         private void AscendingSort_CheckedChanged(object sender, EventArgs e)
         {
             SortData(true);
@@ -99,11 +89,11 @@ namespace Demo_var_6.Forms
         {
             if (ascending)
             {
-                displayedProducts = displayedProducts.OrderBy(product => product.Cost).ToList();
+                displayedProducts = displayedProducts.OrderBy(product => product.Manufacturer).ToList();
             }
             else
             {
-                displayedProducts = displayedProducts.OrderByDescending(product => product.Cost).ToList();
+                displayedProducts = displayedProducts.OrderByDescending(product => product.Manufacturer).ToList();
             }
 
             DisplayProducts(displayedProducts);
@@ -119,6 +109,10 @@ namespace Demo_var_6.Forms
                 ProductInfoControl productControl = CreateProductControl(product);
                 productControl.Location = new Point(0, yOffset);
                 Controls.Add(productControl);
+                if (Role == "Администратор")
+                {
+                    productControl.Click += ProductControl_Click;
+                }
                 yOffset += productControl.Height + 1;
             }
             displayedProductsCount = products.Count;
@@ -129,6 +123,7 @@ namespace Demo_var_6.Forms
         {
             ProductInfoControl productControl = new ProductInfoControl
             {
+                ProductArticleNumber = product.ProductArticleNumber,
                 ProductTitle = product.Title,
                 ProductDescription = product.Description,
                 ProductManufacturer = product.Manufacturer,
@@ -180,10 +175,12 @@ namespace Demo_var_6.Forms
                 control.Dispose();
             }
         }
+
         private void UpdateProductsCountLabel()
         {
             Quntity.Text = $"{displayedProductsCount} из {totalProductsCount}";
         }
+
         private void PopulateManufacturersComboBox()
         {
             using (var dbContext = new TradeContext())
@@ -220,11 +217,13 @@ namespace Demo_var_6.Forms
             }
         }
 
-        private void ModeraitBT_Click(object sender, EventArgs e)
+        private void ProductControl_Click(object sender, EventArgs e)
         {
+            ProductInfoControl clickedControl = (ProductInfoControl)sender;
+            string productArticleNumber = clickedControl.ProductArticleNumber;
+            ProductChange product = new ProductChange(productArticleNumber);
+            product.Show();
             this.Hide();
-            ModerateForm moderateForm = new ModerateForm();
-            moderateForm.Show();
         }
     }
 }
